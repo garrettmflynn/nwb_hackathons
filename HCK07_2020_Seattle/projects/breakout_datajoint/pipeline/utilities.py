@@ -13,12 +13,12 @@ def parse_prefix(line):
     try:
         return datetime.strptime(line[:cover], datetimeformat_ymdhms)
     except Exception as e:
-        msg = f'Error:  {str(e)} \n'
+        msg = f'Error:  {e} \n'
         cover = len(datetime.now().strftime(datetimeformat_ymd))
         try:
             return datetime.strptime(line[:cover], datetimeformat_ymd)
         except Exception as e:
-            print(f'{msg}\t{str(e)}\n\tReturn None')
+            print(f'{msg}\t{e}\n\tReturn None')
             return None
 
 

@@ -57,18 +57,16 @@ chbr_nwb = ImageSeries(
 import os, glob, time, numpy as np
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-i = 0
 os.chdir('/Volumes/Nic/revault/revault2/cmdata/cm62_2/CCD/runE/runE_webcam1/')
 img_full = np.zeros((480,640,len(glob.glob('*.jpg'))),dtype=np.uint8)
-for filename in glob.iglob('*.jpg'):
-     img = mpimg.imread('runE'+str(i)+'.jpg')
-     img_full[:,:,i] = img[:,:,0]
-     i += 1
+for i, filename in enumerate(glob.iglob('*.jpg')):
+    img = mpimg.imread('runE'+str(i)+'.jpg')
+    img_full[:,:,i] = img[:,:,0]
      #imgplot = plt.imshow(img)
      #plt.show()
      #time.sleep(.1)
      #print(i)
-     
+
 webcam_nwb = ImageSeries(
         name='webcam_CCD',
         source='NA',

@@ -13,7 +13,7 @@ def assert_container_equal(astack, bstack):
         a, astack, key_order = stack_step(astack)
         b, bstack, _ = stack_step(bstack, key_order)
 
-        if isinstance(a, NWBContainer) or isinstance(a, dict):
+        if isinstance(a, (NWBContainer, dict)):
             assert( type(a) == type(b) )
             assert_container_equal(astack, bstack)
         elif isinstance(a, NWBData):
